@@ -16,6 +16,7 @@ spec:
       containers:
         - name: nginx
           image: debuglifeindonesia/cohort-01:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 80
 
