@@ -41,6 +41,6 @@ jobs:
         run: |
           ssh -i ~/.ssh/id_rsa.pem ubuntu@108.136.243.13 << 'ENDSSH'
             echo "✅ Connected to server"
-            sudo kubectl apply -f /tmp/nginx-simple-k8s.yaml
+            sudo kubectl patch deployment nginx -p "{\"spec\":{\"template\":{\"metadata\":{\"annotations\":{\"date\":\"$(date +'%s')\"}}}}}"
             echo "✅ Deploy done"
           ENDSSH
