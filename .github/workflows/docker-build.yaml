@@ -35,7 +35,7 @@ jobs:
         run: |
           scp -i ~/.ssh/id_rsa.pem \
             k3s-manifest.yaml \
-            ubuntu@$108.136.243.13:/tmp/nginx-simple-k8s.yaml
+            ubuntu@108.136.243.13:/tmp/nginx-simple-k8s.yaml
 
       - name: Deploy to Server
         run: |
