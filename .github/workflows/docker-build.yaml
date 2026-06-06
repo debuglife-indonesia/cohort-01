@@ -34,7 +34,7 @@ jobs:
       - name: Copy manifest to VPS
         run: |
           scp -i ~/.ssh/id_rsa.pem \
-            k8s/nginx-simple-k8s.yaml \
+            k3s-manifest.yaml \
             ubuntu@$108.136.243.13:/tmp/nginx-simple-k8s.yaml
 
       - name: Deploy to Server
