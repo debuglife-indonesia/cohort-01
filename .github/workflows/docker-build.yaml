@@ -17,8 +17,7 @@ jobs:
 
       - name: Docker Build
         run: |
-          docker login -u debuglifeindonesia  
-          echo "${{ secrets.DOCKER_HUB_PAT }}" | docker login -u debuglifeindonesia --password-stdin
+          docker login -u debuglifeindonesia -p "${{ secrets.DOCKER_HUB_PAT }}
           docker build -t debuglifeindonesia/cohort-01:latest .
           docker push debuglifeindonesia/cohort-01:latest
 
