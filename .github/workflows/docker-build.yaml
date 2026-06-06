@@ -31,10 +31,16 @@ jobs:
         run: |
           ssh-keyscan -H 108.136.243.13 >> ~/.ssh/known_hosts
 
+      - name: Copy manifest to VPS
+        run: |
+          scp -i ~/.ssh/id_rsa.pem \
+            k8s/nginx-simple-k8s.yaml \
+            ubuntu@$108.136.243.13:/tmp/nginx-simple-k8s.yaml
+
       - name: Deploy to Server
         run: |
           ssh -i ~/.ssh/id_rsa.pem ubuntu@108.136.243.13 << 'ENDSSH'
             echo "✅ Connected to server"
-            sudo kubectl rollout restart deployment/nginx
+            sudo kubectl apply -f /tmp/nginx-simple-k8s.yaml
             echo "✅ Deploy done"
           ENDSSH
